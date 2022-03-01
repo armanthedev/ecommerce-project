@@ -30,7 +30,7 @@
                         <td>{{$value->status}}</td>
                         <td> <button class="btn btn-success shadow" type="submit"><i class="far fa-check-circle"></i></button>
 
-                           <a href="{{route('updateparent')}}"><button type="button" class="btn btn-primary shadow" type="submit" data-toggle="modal"
+                           <a href="{{route('editparent',['id'=>$value->id])}}"><button type="button" class="btn btn-primary shadow" type="submit" data-toggle="modal"
                                 data-target="#exampleModal">
                                 <i class="fas fa-pen-alt"></i>
                             </button></a>

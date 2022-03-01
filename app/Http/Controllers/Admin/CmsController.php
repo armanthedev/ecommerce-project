@@ -121,7 +121,7 @@ class CmsController extends Controller
                                 ->first();
 
      
-        return view('Admin/updatedelivery',$data);
+        return view('Admin/editedelivery',$data);
     }
 
     public function updateDelivery($id=null, Request $request){
@@ -146,9 +146,9 @@ class CmsController extends Controller
         );
        $update = DB::table('deliveryinfo_tb')->where('id',$id)->update($data);
        if($update){
-            return redirect('updatedelivery/'.$id)->with('status', 'Successfully Added');
+            return redirect('editedelivery/'.$id)->with('status', 'Successfully Added');
        }else{
-            return redirect('updatedelivery/'.$id)->with('error', 'Something Went Wrong');
+            return redirect('editedelivery/'.$id)->with('error', 'Something Went Wrong');
        }
         // $input = $request -> all();
         // echo '<pre>'; 

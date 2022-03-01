@@ -38,7 +38,11 @@
                         <td>{{$value->Fees}}</td>
                         <td>{{$value->Comments}}</td>
                         <td>{{$value->Date}}</td>
-                        <td> <a class="btn btn-primary shadow" href="{{route('updatedelivery',['id'=>$value->id])}}"><i class="fas fa-edit"></i></a> </td>
+                        <td> <a class="btn btn-primary shadow" href="{{route('editedelivery',['id'=>$value->id])}}"><i class="fas fa-edit"></i></a> 
+                           
+                            <a class="btn btn-danger shadow" href="#"><i class="fas fa-edit"></i></a>
+                          
+                        </td> 
                     </tr>
                     @endforeach
                 </tbody>

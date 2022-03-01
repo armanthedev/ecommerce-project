@@ -35,9 +35,11 @@ route::post('/addcatagory','App\Http\Controllers\Admin\CatagoryController@postCa
 
 route::get('/parentcategory','App\Http\Controllers\Admin\CatagoryController@parentCategory')->name('parentcategory');
 
-route::get('/childcategory','App\Http\Controllers\Admin\CatagoryController@childCategory')->name('childcategory');
+route::get('/editparent/{id}','App\Http\Controllers\Admin\CatagoryController@editParent')->name('editparent');
 
-route::get('/updateparent','App\Http\Controllers\Admin\CatagoryController@editParent')->name('updateparent');
+route::put('/editparent/{id}','App\Http\Controllers\Admin\CatagoryController@updateParent')->name('editparent');
+
+route::get('/childcategory','App\Http\Controllers\Admin\CatagoryController@childCategory')->name('childcategory');
 
 route::get('/editchild/{id}','App\Http\Controllers\Admin\CatagoryController@editChild')->name('editchild');
 
@@ -65,11 +67,10 @@ route::post('/addbanner','App\Http\Controllers\Admin\CmsController@updateBanner'
 //delivery -- start
 route::get('/deliveryinfo','App\Http\Controllers\Admin\CmsController@deliveryInfo')->name('deliveryinfo');
 
-route::get('/updatedelivery/{id}','App\Http\Controllers\Admin\CmsController@editeDelivery')->name('updatedelivery');
+route::get('/editedelivery/{id}','App\Http\Controllers\Admin\CmsController@editeDelivery')->name('editedelivery');
 
-route::post('/updatedelivery/{id}','App\Http\Controllers\Admin\CmsController@updateDelivery')->name('updatedelivery');
+route::post('/editedelivery/{id}','App\Http\Controllers\Admin\CmsController@updateDelivery')->name('editedelivery');
 
-//delivery -- end
 //privacy -- start
 route::get('/privacy','App\Http\Controllers\Admin\CmsController@privacy')->name('privacy');
 

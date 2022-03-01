@@ -1,15 +1,15 @@
 @extends('layouts.admin')
-@section('title', 'updatedeliveryinfo')
+@section('title', 'editdeliveryinfo')
 @section('content')
 
 <div class="card p-2">
     <div class="card-header card-title">
-        <h3>Update Delivery info</h3>
+        <h3>Edit Delivery info</h3>
     </div> 
 
     <!-- // -->
     <div class="p-2 card-body">
-        <form class="d-flex justify-content-between" action="{{route('updatedelivery',['id'=>$editdelivery->id])}}" method="POST">
+        <form class="d-flex justify-content-between" action="{{route('editedelivery'['id'=>$editdelivery->id])}}" method="POST">
             @csrf
             <div class="product_l_hand col-lg-8">
                 <div class="form-group">
