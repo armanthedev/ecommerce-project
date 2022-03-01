@@ -31,7 +31,7 @@ route::put('/editproduct/{id}','App\Http\Controllers\Admin\ProductController@upd
 //category--start
 route::get('/addcatagory','App\Http\Controllers\Admin\CatagoryController@addcatagory')->name('addcatagory');
 
-route::post('/addcatagory','App\Http\Controllers\Admin\CatagoryController@postCatagory')->name('addcatagory');
+route::post('/addcatagory','App\Http\Controllers\Admin\CatagoryController@postCatagory')->name('addcategory');
 
 route::get('/parentcategory','App\Http\Controllers\Admin\CatagoryController@parentCategory')->name('parentcategory');
 
@@ -39,7 +39,11 @@ route::get('/childcategory','App\Http\Controllers\Admin\CatagoryController@child
 
 route::get('/updateparent','App\Http\Controllers\Admin\CatagoryController@editParent')->name('updateparent');
 
-route::get('/updatechild','App\Http\Controllers\Admin\CatagoryController@editChild')->name('updatechild');
+route::get('/editchild/{id}','App\Http\Controllers\Admin\CatagoryController@editChild')->name('editchild');
+
+route::post('/editchild/{id}','App\Http\Controllers\Admin\CatagoryController@updateChild')->name('editchild');
+
+// route::post('/editchild/{id}','App\Http\Controllers\Admin\CatagoryController@editChild')->name('editchild');
 //category--end
 route::get('/addorder','App\Http\Controllers\Admin\OrderController@ordertable')->name('ordertable');
 
@@ -63,15 +67,14 @@ route::get('/deliveryinfo','App\Http\Controllers\Admin\CmsController@deliveryInf
 
 route::get('/updatedelivery/{id}','App\Http\Controllers\Admin\CmsController@editeDelivery')->name('updatedelivery');
 
-// route::post('/updatedelivery/{id}','App\Http\Controllers\Admin\CmsController@updateDelivery')->name('updatedelivery');
+route::post('/updatedelivery/{id}','App\Http\Controllers\Admin\CmsController@updateDelivery')->name('updatedelivery');
 
 //delivery -- end
-route::get('/sitemap','App\Http\Controllers\Admin\CmsController@siteMap')->name('sitemap');
-
+//privacy -- start
 route::get('/privacy','App\Http\Controllers\Admin\CmsController@privacy')->name('privacy');
 
 route::post('/privacy','App\Http\Controllers\Admin\CmsController@updatePrivacy')->name('privacy');
-
+//privacy --end
 route::get('/appsetting','App\Http\Controllers\Admin\SettingController@appSetting')->name('appsetting');
 
 route::get('/smssetting','App\Http\Controllers\Admin\SettingController@smsSetting')->name('smssetting');

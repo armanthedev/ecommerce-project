@@ -171,7 +171,6 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    
 
 
                     @yield('content')

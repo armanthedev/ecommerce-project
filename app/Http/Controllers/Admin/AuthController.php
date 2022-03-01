@@ -21,12 +21,12 @@ class AuthController extends Controller
 
     public function postLogin(request $request){
         $validated = $request->validate([
-            'email' => 'required|max:20|email:rfc,dns',
+            'email' => 'required|max:20',
             'password' => 'required',
             'terms' => 'required|max:1'
         ]);
 
-        
+        // |email:rfc,dns'
 
         $email = $request->input('email');
         $password = $request->input('password');

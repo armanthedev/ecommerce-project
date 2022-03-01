@@ -25,8 +25,11 @@
                         <td>{{$value->id}}</td>
                         <td>{{$value->c_name}}</td>
                         <td>{{$value->status}}</td>
-                        <td> <button class="btn btn-success shadow" type="submit"><i class="far fa-check-circle"></i></button>
-                            <button class="btn btn-primary shadow" type="submit"><i class="fas fa-pen-alt"></i></button>
+                        <td> 
+                            <button class="btn btn-success shadow" type="submit"><i class="far fa-check-circle"></i></button>
+                                <a href="{{route('editchild',['id'=>$value->id])}}">
+                                    <button class="btn btn-primary shadow" type="submit"><i class="fas fa-pen-alt"></i></button>
+                                </a>
                             <button class="btn btn-danger shadow" type="submit"><i class="fas fa-trash-alt"></i>
                             </button>
                         </td>

@@ -9,7 +9,7 @@
 
     <!-- // -->
     <div class="p-2 card-body">
-        <form class="d-flex justify-content-between" action="{{route('deliver',['id'=>$editdelivery->id])}}" method="POST">
+        <form class="d-flex justify-content-between" action="{{route('updatedelivery',['id'=>$editdelivery->id])}}" method="POST">
             @csrf
             <div class="product_l_hand col-lg-8">
                 <div class="form-group">
@@ -49,7 +49,7 @@
                     <input name="fees" value="{{$editdelivery->Fees}}" type="number" class="form-control" id="Fees" required>
                 </div>
 
-                <button type="submit" class="btn btn-success shadow">Publish</button>
+                <button type="submit" class="btn btn-success shadow">Update</button>
             </div>
 
 

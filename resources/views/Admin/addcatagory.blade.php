@@ -8,7 +8,7 @@
             <h3> Catagories </h3>
         </div>
         <div class="card-body">
-            <form action="addcatagory" method="post">
+            <form action="{{route('addcategory')}}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>

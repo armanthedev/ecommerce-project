@@ -18,22 +18,6 @@ class CatagoryController extends Controller
     }
 
 
-    public function parentCategory(){
-
-        $data['parentcategory'] = DB::table('category_tb')
-        ->select('category_tb.*')
-        ->where('category','=',0)                          
-        ->get();
-
-        return view('Admin/parentcategory',$data);
-    }
-    public function childCategory(){
-        $data['childcategory'] = DB::table('category_tb')
-        ->select('category_tb.*')
-        ->where('category','!=',0)                          
-        ->get();
-        return view('Admin/childcategory', $data);
-    }
   
     public function postCatagory(Request $request){
         $validated = $request->validate([
@@ -61,12 +45,58 @@ class CatagoryController extends Controller
 
 
     }
+
+    
+    public function parentCategory(){
+
+        $data['parentcategory'] = DB::table('category_tb')
+        ->select('category_tb.*')
+        ->where('category','=',0)                          
+        ->get();
+
+        return view('Admin/parentcategory',$data);
+    }
+    public function childCategory(){
+        $data['childcategory'] = DB::table('category_tb')
+        ->select('category_tb.*')
+        ->where('category','!=',0)                          
+        ->get();
+        return view('Admin/childcategory', $data);
+    }
     
     public function editParent(){
         return view('Admin/editparentcatagory');
     }
-    public function editChild(){
-        return view('Admin/editchildcatagory');
+    public function editChild($id=null){
+        $data['childcategory'] = DB::table('category_tb')
+                            ->select('category_tb.*')
+                            ->where('category','!=',0)                          
+                            ->first();
+        
+        return view('Admin/editchildcatagory',$data);
+    }
+    public function updateChild($id=null, Request $request){
+        $validated = $request->validate([
+            'c_name' => 'required|max:255',
+            'category' => 'required|numeric',
+            'status' => 'required|numeric',
+            // 'c_description' => 'required|max:500',
+        ]);
+
+        $data = array(
+            'c_name' => $request ->input('c_name'),
+            'category' => $request ->input('category'),
+            'status' => $request ->input('status'),
+            // 'c_description' => $request ->input('c_description'),
+        );
+
+        $update = DB::table('category_tb') ->where('id',$id)->update($data);
+
+        if($update){
+            return redirect('editchild/'.$id)->with('status','Successfully added');
+        }else{
+            return redirect('editchild/'.$id)->with('status','Something wrong');
+        }
     }
 
 }
