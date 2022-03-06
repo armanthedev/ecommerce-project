@@ -8,7 +8,7 @@
             <h3> Add New Banner </h3>
         </div>
         <div class="card-body">
-            <form action="addbanner" method="post"  enctype="multipart/form-data">
+            <form action="{{route('addbanner')}}" method="post"  enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>

@@ -42,7 +42,7 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
+                                <h5>{{$appsetting->phone}}</h5>
                                 <span>support 24/7 time</span>
                             </div>
                         </div>
@@ -63,8 +63,6 @@
         <div class="container">
             <div class="row">
                 <div class="categories__slider owl-carousel">
-                    <!-- {{asset('/ogani/img/categories/cat-5.jpg')}} -->
-                    
                     <div class="col-lg-3">
                         <div class="categories__item set-bg"
                             data-setbg="{{asset('/ecommerce/img/categories/cat-1.jpg')}}">

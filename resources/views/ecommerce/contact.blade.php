@@ -44,7 +44,7 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
+                                <h5>{{$appsetting->phone}}</h5>
                                 <span>support 24/7 time</span>
                             </div>
                         </div>
@@ -138,16 +138,17 @@
                     </div>
                 </div>
             </div>
-            <form action="#">
+            <form action="{{route('contact')}}" method="post">
+                @csrf
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your name">
+                        <input name="name" type="text" placeholder="Your name">
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Your Email">
+                        <input name="email" type="text" placeholder="Your Email">
                     </div>
                     <div class="col-lg-12 text-center">
-                        <textarea placeholder="Your message"></textarea>
+                        <textarea name="messages" placeholder="Your message"></textarea>
                         <button type="submit" class="site-btn">SEND MESSAGE</button>
                     </div>
                 </div>

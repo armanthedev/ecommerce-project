@@ -55,7 +55,11 @@ route::get('/contactus','App\Http\Controllers\Admin\CmsController@contactUs')->n
 
 route::post('/contactus','App\Http\Controllers\Admin\CmsController@updateContact')->name('contactus');
 //contact--end
+//add header--start
+route::get('/addheader','App\Http\Controllers\Admin\CmsController@addHeader')->name('addheader');
 
+route::post('/addheader','App\Http\Controllers\Admin\CmsController@updateHeader')->name('addheader');
+//end header--end
 //banner -- start
 route::get('/addbanner','App\Http\Controllers\Admin\CmsController@addBanner')->name('addbanner');
 
@@ -70,15 +74,28 @@ route::get('/deliveryinfo','App\Http\Controllers\Admin\CmsController@deliveryInf
 route::get('/editedelivery/{id}','App\Http\Controllers\Admin\CmsController@editeDelivery')->name('editedelivery');
 
 route::post('/editedelivery/{id}','App\Http\Controllers\Admin\CmsController@updateDelivery')->name('editedelivery');
+//delivery--end
+//social link -- start
+route::get('/sociallink','App\Http\Controllers\Admin\CmsController@socialLink')->name('sociallink');
 
+route::post('/sociallink','App\Http\Controllers\Admin\CmsController@updateSociallink')->name('sociallink');
 //privacy -- start
 route::get('/privacy','App\Http\Controllers\Admin\CmsController@privacy')->name('privacy');
 
 route::post('/privacy','App\Http\Controllers\Admin\CmsController@updatePrivacy')->name('privacy');
 //privacy --end
+
+//app setting --start
 route::get('/appsetting','App\Http\Controllers\Admin\SettingController@appSetting')->name('appsetting');
+
+route::post('/appsetting','App\Http\Controllers\Admin\SettingController@updateAppsetting')->name('appsetting');
 
 route::get('/smssetting','App\Http\Controllers\Admin\SettingController@smsSetting')->name('smssetting');
 
 route::get('/emailsetting','App\Http\Controllers\Admin\SettingController@emailSetting')->name('emailsetting');
+
+route::get('/subscriber','App\Http\Controllers\Admin\EnvelopeController@subscriber')->name('subscriber');
+
+route::get('/messages','App\Http\Controllers\Admin\EnvelopeController@messages')->name('messages');
+
 

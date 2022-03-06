@@ -27,9 +27,14 @@ route::get('/checkout','App\Http\Controllers\Customer\CheckoutController@checkOu
 
 route::get('/contact','App\Http\Controllers\Customer\ContactController@contact')->name('contact');
 
+route::post('/contact','App\Http\Controllers\Customer\ContactController@addMessages')->name('contact');
+
 route::get('/shop','App\Http\Controllers\Customer\ShopController@shop')->name('shop');
 
 route::get('/shoppingcart','App\Http\Controllers\Customer\ShopController@shopingCart')->name('shoppingcart');
+
+route::post('/','App\Http\Controllers\Customer\HomeController@addSubscriber')->name('home');
+
 
 
 

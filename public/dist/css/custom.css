@@ -50,11 +50,16 @@ nav.main-header {
 
 .dt-button {
     padding: 5px;
-    background: #0062cc;
+    background: #0ba2c0;
     color: #fff;
+    outline: none;
+    border: none;
+    box-shadow: 10px 10px 5px 0px rgba(240, 240, 240, 0.281);
+-webkit-box-shadow: 10px 10px 5px 0px rgba(240, 240, 240, 0.247);
+-moz-box-shadow: 10px 10px 5px 0px rgba(240, 240, 240, 0.322);
 }
 .dt-button:hover {
-    background: #0351a5;
+    background: #097eec;
     color: #fff;
 }
 

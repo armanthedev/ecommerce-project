@@ -15,9 +15,14 @@ class ProductController extends Controller
                             ->where('category','!=',0)
                             ->where('status',1)
                             ->get();
+
+    $data['appsetting'] = DB::table('appsetting_tb')
+                            ->select('copyright_text')
+                            ->first();                    
                         // echo '<pre>';
                         // print_r($data);
                         // die();
+
         return view('Admin/addproduct',$data);
     }
     public function manageproduct(){
@@ -27,7 +32,9 @@ class ProductController extends Controller
                             ->join('category_tb','category_tb.id','=','product_tb.p_category')
                             ->orderby('product_tb.p_category','ASC')
                             ->get();
-                           
+    $data['appsetting'] = DB::table('appsetting_tb')
+                            ->select('copyright_text')
+                            ->first();      
 
         return view('Admin/manageproduct',$data);
     }
@@ -87,7 +94,10 @@ class ProductController extends Controller
                             ->where('status',1)
                             ->where('id','!=',$product->c_id)
                             ->get();
-
+                            
+    $data['appsetting'] = DB::table('appsetting_tb')
+                            ->select('copyright_text')
+                            ->first();
             // echo '<pre>';
             // print_r();
             // die();       

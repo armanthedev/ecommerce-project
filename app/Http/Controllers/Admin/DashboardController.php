@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Session;
+use Illuminate\Support\Facades\Session;
 class DashboardController extends Controller
 {
     public function index(){
@@ -21,8 +21,10 @@ class DashboardController extends Controller
                                 ->orderBy('product_tb.p_category','ASC')
                                 ->get();
 
-
-
+        $data['appsetting'] = DB::table('appsetting_tb')
+                                ->select('copyright_text')
+                                ->first();
+       
        return view('Admin/dashboard',$data);
        
     }

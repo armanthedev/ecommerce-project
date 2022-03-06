@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ContactTb extends Migration
+class SubscribeTb extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class ContactTb extends Migration
      */
     public function up()
     {
-        Schema::create('contact_tb', function (Blueprint $table) {
-            $table->increments('Id');
-            $table->string('Heading' , 255);
-            $table->integer('phone',);
-            $table->string('address' , 255);
-            $table->string('opentime' , 1000);
+       
+        Schema::create('subscribe_tb', function (Blueprint $table) {
+            $table->smallIncrements('id');
             $table->string('email')->unique();
             $table->timestamps();
         });

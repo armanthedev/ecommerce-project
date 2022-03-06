@@ -12,8 +12,21 @@ class HomeController extends Controller
                 $data['banner'] = DB::table('banner_tb')
                 ->select('*')
                 ->first();
+
+                $data['sociallink'] = DB::table('social_tb')
+                            ->select('*')
+                            ->first();
+
+                $data['appsetting'] = DB::table('appsetting_tb')
+                ->select('*')
+                ->first();
+
+                $data['category'] = DB::table('category_tb')
+                ->select('category_tb.c_name')
+                ->where('category','!=',0)                          
+                ->get();
                 
-        return view('ecommerce/home', $data);
+        return view('ecommerce/home',$data);
     }
 
     public function privacyPolicy(){
@@ -52,6 +65,30 @@ class HomeController extends Controller
             return redirect('deliverinfo')->with('status', 'Successfully Added');
        }else{
             return redirect('deliverinfo')->with('error', 'Something Went Wrong');
+       }
+        // $input = $request -> all();
+        // echo '<pre>'; 
+        // print_r($input);
+        // die();
+       
+        // print_r(request->all());
+        // die();
+    }
+    //===================================================================//
+    public function addSubscriber(Request $request){
+        $validated = $request->validate([
+            'email'              => 'required |max:30',
+        ]);
+        
+        $data = array(
+            'email'            => $request->input('email')
+
+        );
+       $insert = DB::table('subscribe_tb')->insert($data);
+       if($insert){
+            return redirect('/')->with('status', 'you suscribe here');
+       }else{
+            return redirect('/')->with('error', 'Something Went Wrong');
        }
         // $input = $request -> all();
         // echo '<pre>'; 

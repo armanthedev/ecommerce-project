@@ -8,11 +8,63 @@ use Illuminate\Support\Facades\DB;
 class CmsController extends Controller
 {
 
+
+    public function addHeader(){
+        $data['editheader'] = DB::table('header_tb')
+                                ->select('*')
+                                ->first();
+
+
+        return view('Admin/addheader',$data);
+    }
+
+    public function updateHeader(Request $request)
+        {
+            $validated = $request->validate([
+                'freeshipping' => 'required|max:255',
+                'facebook'     => 'required|url',
+                'twitter'      => 'required|url',
+                'linkedin'     => 'required|url',
+                'pinterest'    => 'required|url',
+                'image'        => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
+            ]);
+        
+            if( $request->file('image')){
+                $image_name = time().$request->file('image')->getClientOriginalName();
+                $path = $request->file('image')->storeAs('public/product-image',$image_name);
+    
+            }else{
+                $image_name = $request->input('old_image');
+            }
+
+            
+            $data = array(
+                'freeshipping'      => $request->input('freeshipping'),
+                'facebook'          =>  $request->input('facebook'),
+                'twitter'           =>  $request->input('twitter'),
+                'linkdin'          =>  $request->input('linkedin'),
+                'pinterest'         =>  $request->input('pinterest'),
+                'image'             => $image_name
+            );
+
+
+
+            $update = DB::table('header_tb')->update($data);
+            if($update){
+                return redirect('addheader')->with('status','successfully added');
+            }else{
+                return redirect('addheader')->with('status', 'something went wrong');
+            }
+        }
+
+    //===========================================================================================//
     public function addBanner(){
         $data['editbanner'] = DB::table('banner_tb')
                             ->select('*')
                             ->first();
-
+                            $data['appsetting'] = DB::table('appsetting_tb')
+                            ->select('copyright_text')
+                            ->first();
         return view('Admin/addbanner',$data);
     }
 
@@ -55,14 +107,17 @@ class CmsController extends Controller
         // print_r(request->all());
         // die();
     }
-    //===========================================================================================/
+    //===========================================================================================//
 
     public function contactUs(){
 
         $data['editcontact'] = DB::table('contact_tb')
                             ->select('*')
                             ->first();
-
+                           
+                            $data['appsetting'] = DB::table('appsetting_tb')
+                            ->select('copyright_text')
+                            ->first();
         return view('Admin/contactus', $data);
     }
 
@@ -110,6 +165,9 @@ class CmsController extends Controller
         $data['deliveryinfo']  = DB::table('deliveryinfo_tb')
                              ->select('*')
                              ->get();
+        $data['appsetting'] = DB::table('appsetting_tb')
+                             ->select('*')
+                             ->first();
 
         return view('Admin/deliveryinfo',  $data);
     }
@@ -119,7 +177,9 @@ class CmsController extends Controller
                                 ->select('*')
                                 ->where('deliveryinfo_tb.id',$id)
                                 ->first();
-
+                                $data['appsetting'] = DB::table('appsetting_tb')
+                                ->select('copyright_text')
+                                ->first();
      
         return view('Admin/editedelivery',$data);
     }
@@ -158,7 +218,46 @@ class CmsController extends Controller
         // print_r(request->all());
         // die();
     }
+    //=============================================================================================//
+    public function socialLink(){
+        $data['sociallink'] = DB::table('social_tb')
+                            ->select('*')
+                            ->first();
+                            $data['appsetting'] = DB::table('appsetting_tb')
+                            ->select('copyright_text')
+                            ->first();
+        
+        return view('Admin/sociallink',$data);
+    }
 
+    public function updateSociallink(Request $request)
+        {
+            $validated = $request->validate([
+                'facebook'     => 'required|url',
+                'twitter'      => 'required|url',
+                'linkedin'     => 'required|url',
+                'instagram'     => 'required|url',
+                'pinterest'    => 'required|url',
+            ]);
+        
+            
+            $data = array(
+                'facebook'          =>  $request->input('facebook'),
+                'twitter'           =>  $request->input('twitter'),
+                'linkedin'          =>  $request->input('linkedin'),
+                'instagram'          =>  $request->input('instagram'),
+                'pinterest'         =>  $request->input('pinterest'),
+            );
+
+            
+
+            $update = DB::table('social_tb')->update($data);
+            if($update){
+                return redirect('sociallink')->with('status','successfully added');
+            }else{
+                return redirect('sociallink')->with('status', 'something went wrong');
+            }
+        }
 
     //============================================================================================//
 
@@ -168,7 +267,9 @@ class CmsController extends Controller
                             ->select('*')
                             ->first();
 
-
+                            $data['appsetting'] = DB::table('appsetting_tb')
+                            ->select('copyright_text')
+                            ->first();
         return view('Admin/privacy',$data);
     }
 
@@ -198,12 +299,6 @@ class CmsController extends Controller
         // die();
     }
     //=============================================================================================//
-
-
-
-    public function siteMap(){
-        return view('Admin/sitemap');
-    }
 
 
     

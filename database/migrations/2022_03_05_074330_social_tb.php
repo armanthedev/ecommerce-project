@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DeliveryinfoTb extends Migration
+class SocialTb extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class DeliveryinfoTb extends Migration
      */
     public function up()
     {
-        Schema::create('deliveryinfo_tb', function (Blueprint $table) {
+        Schema::create('social_tb', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('u_name' , 255);
-            $table->integer('Amount');
-            $table->string('pay_method');
-            $table->double('Fees', 8, 2);
-            $table->string('Comments',255);
+            $table->string('facebook')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('linkedin')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('pinterest')->nullable();
             $table->date('Date');
             $table->timestamps();
         });
-        
     }
 
     /**

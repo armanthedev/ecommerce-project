@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DeliveryinfoTb extends Migration
+class ContactTb extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,16 @@ class DeliveryinfoTb extends Migration
      */
     public function up()
     {
-        Schema::create('deliveryinfo_tb', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('u_name' , 255);
-            $table->integer('Amount');
-            $table->string('pay_method');
-            $table->double('Fees', 8, 2);
-            $table->string('Comments',255);
-            $table->date('Date');
+        Schema::create('contact_tb', function (Blueprint $table) {
+            $table->increments('Id');
+            $table->string('Heading' , 255);
+            $table->string('phone',);
+            $table->string('address' , 255);
+            $table->string('opentime' , 1000);
+            $table->string('email')->unique();
             $table->timestamps();
         });
+        
         
     }
 

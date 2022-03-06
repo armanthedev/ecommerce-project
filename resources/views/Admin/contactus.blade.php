@@ -19,7 +19,7 @@
                 <div class="form-group row">
                     <label for="title" class="col-sm-2 col-form-label">Phone </label>
                     <div class="col-sm-10">
-                        <input type="number" name="phone" value="{{$editcontact->phone}}" class="form-control" id="title" placeholder="phone number" required>
+                        <input type="text" name="phone" value="{{$editcontact->phone}}" class="form-control" id="title" placeholder="phone number" required>
                     </div>
                 </div>
                 <div class="form-group row">

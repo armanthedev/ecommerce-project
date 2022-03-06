@@ -9,7 +9,7 @@
 
     <!-- // -->
     <div class="p-2 card-body">
-        <form class="d-flex justify-content-between" action="{{route('editedelivery'['id'=>$editdelivery->id])}}" method="POST">
+        <form class="d-flex justify-content-between" action="{{route('editedelivery',['id'=>$editdelivery->id])}}" method="POST">
             @csrf
             <div class="product_l_hand col-lg-8">
                 <div class="form-group">

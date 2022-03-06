@@ -10,9 +10,13 @@ class CatagoryController extends Controller
 {
     public function addcatagory(){
         $data['category'] = DB::table('category_tb')
-        ->select('category_tb.*')
-        ->where('category','=',0)                          
-        ->get();
+                            ->select('category_tb.*')
+                            ->where('category','=',0)                          
+                            ->get();
+
+        $data['appsetting'] = DB::table('appsetting_tb')
+                            ->select('copyright_text')
+                            ->first();
                                   
         return view ('Admin/addcatagory',$data);
     }
@@ -50,26 +54,34 @@ class CatagoryController extends Controller
     public function parentCategory(){
 
         $data['parentcategory'] = DB::table('category_tb')
-        ->select('category_tb.*')
-        ->where('category','=',0)                          
-        ->get();
+                                ->select('category_tb.*')
+                                ->where('category','=',0)                          
+                                ->get();
+            $data['appsetting'] = DB::table('appsetting_tb')
+                                ->select('copyright_text')
+                                ->first();
 
         return view('Admin/parentcategory',$data);
     }
     public function childCategory(){
         $data['childcategory'] = DB::table('category_tb')
-        ->select('category_tb.*')
-        ->where('category','!=',0)                          
-        ->get();
+                                ->select('category_tb.*')
+                                ->where('category','!=',0)                          
+                                ->get();
+            $data['appsetting']= DB::table('appsetting_tb')
+                                ->select('copyright_text')
+                                ->first();
         return view('Admin/childcategory', $data);
     }
     
     public function editParent($id=null){
         $data['editparent'] = DB::table('category_tb')
-        ->select('category_tb.*')
-        ->where('category','=',0)                          
-        ->first();
-
+                            ->select('category_tb.*')
+                            ->where('category','=',0)                          
+                            ->first();
+        $data['appsetting'] = DB::table('appsetting_tb')
+                            ->select('copyright_text')
+                            ->first();
         return view('Admin/editparentcatagory',$data);
     }
     public function updateParent($id=null, Request $request){
@@ -97,9 +109,12 @@ class CatagoryController extends Controller
     }
     public function editChild($id=null){
         $data['childcategory'] = DB::table('category_tb')
-                            ->select('category_tb.*')
-                            ->where('category','!=',0)                          
-                            ->first();
+                                ->select('category_tb.*')
+                                ->where('category','!=',0)                          
+                                ->first();
+           $data['appsetting'] = DB::table('appsetting_tb')
+                                ->select('copyright_text')
+                                ->first();                  
         
         return view('Admin/editchildcatagory',$data);
     }
