@@ -41,7 +41,7 @@ class ProductController extends Controller
  public function addProduct(Request $request){
         $validated = $request->validate([
             'p_name'            => 'required|max:255',
-            'short_description' => 'required|max:150',
+            'short_description' => 'required|max:255',
             'long_description'  => 'required|max:500',
             'p_category'        => 'required|numeric',
             'image'             => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',

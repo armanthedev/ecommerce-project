@@ -35,6 +35,9 @@ route::get('/shoppingcart','App\Http\Controllers\Customer\ShopController@shoping
 
 route::post('/','App\Http\Controllers\Customer\HomeController@addSubscriber')->name('home');
 
+route::get('/addCart/{id}','App\Http\Controllers\Customer\CartController@addCart')->name('addCart');
+
+
 
 
 

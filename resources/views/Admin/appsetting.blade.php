@@ -49,6 +49,7 @@
                 <div class="form-group d-flex">
                     <label for="favicon" class="col-sm-2 col-form-label">Favicon</label>
                     <div class="col-sm-10">
+                    <input type="hidden" name="old_image_one" value="{{$appsetting->fav_img}}">
                         <input type="file" value="{{$appsetting->fav_img}}" name="favicon" class="form-control-file"
                             id="favicon">
                         <img src="{{ asset('storage/product-image/'.$appsetting->fav_img) }}" widh="70" height="70">
@@ -58,6 +59,7 @@
                 <div class="form-group row">
                     <label for="sitelogo" class="col-sm-2 col-form-label">Site Logo</label>
                     <div class="col-sm-10">
+                    <input type="hidden" name="old_image_two" value="{{$appsetting->site_logo}}">
                         <input type="file" value="{{$appsetting->site_logo}}" name="sitelogo" class="form-control-file"
                             id="sitelogo">
                         <img src="{{ asset('storage/product-image/'.$appsetting->site_logo) }}" widh="70" height="70">

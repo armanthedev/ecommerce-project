@@ -9,55 +9,6 @@ class CmsController extends Controller
 {
 
 
-    public function addHeader(){
-        $data['editheader'] = DB::table('header_tb')
-                                ->select('*')
-                                ->first();
-
-
-        return view('Admin/addheader',$data);
-    }
-
-    public function updateHeader(Request $request)
-        {
-            $validated = $request->validate([
-                'freeshipping' => 'required|max:255',
-                'facebook'     => 'required|url',
-                'twitter'      => 'required|url',
-                'linkedin'     => 'required|url',
-                'pinterest'    => 'required|url',
-                'image'        => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048'
-            ]);
-        
-            if( $request->file('image')){
-                $image_name = time().$request->file('image')->getClientOriginalName();
-                $path = $request->file('image')->storeAs('public/product-image',$image_name);
-    
-            }else{
-                $image_name = $request->input('old_image');
-            }
-
-            
-            $data = array(
-                'freeshipping'      => $request->input('freeshipping'),
-                'facebook'          =>  $request->input('facebook'),
-                'twitter'           =>  $request->input('twitter'),
-                'linkdin'          =>  $request->input('linkedin'),
-                'pinterest'         =>  $request->input('pinterest'),
-                'image'             => $image_name
-            );
-
-
-
-            $update = DB::table('header_tb')->update($data);
-            if($update){
-                return redirect('addheader')->with('status','successfully added');
-            }else{
-                return redirect('addheader')->with('status', 'something went wrong');
-            }
-        }
-
-    //===========================================================================================//
     public function addBanner(){
         $data['editbanner'] = DB::table('banner_tb')
                             ->select('*')
@@ -75,11 +26,7 @@ class CmsController extends Controller
             'image'             => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
           
         ]);
-        // $input = $request -> all();
-        // echo '<pre>'; 
-        // print_r($input);
-        // die();
-        
+    
         if($request->file('image')){
             $image_name = time().$request->file('image')->getClientOriginalName();
             $path = $request->file('image')->storeAs('public/product-image',$image_name);
@@ -99,13 +46,7 @@ class CmsController extends Controller
        }else{
             return redirect('addbanner')->with('error', 'Something Went Wrong');
        }
-        // $input = $request -> all();
-        // echo '<pre>'; 
-        // print_r($input);
-        // die();
        
-        // print_r(request->all());
-        // die();
     }
     //===========================================================================================//
 
@@ -129,12 +70,6 @@ class CmsController extends Controller
             'address'        => 'required|max:255',
             'opentime'        => 'required|max:255',
         ]);
-        // $input = $request -> all();
-        // echo '<pre>'; 
-        // print_r($input);
-        // die();
-        
-        
         
         
         $data = array(
@@ -150,13 +85,7 @@ class CmsController extends Controller
        }else{
             return redirect('contactus')->with('error', 'Something Went Wrong');
        }
-        // $input = $request -> all();
-        // echo '<pre>'; 
-        // print_r($input);
-        // die();
-       
-        // print_r(request->all());
-        // die();
+        
     }
 
     //============================================================================================//
@@ -210,13 +139,7 @@ class CmsController extends Controller
        }else{
             return redirect('editedelivery/'.$id)->with('error', 'Something Went Wrong');
        }
-        // $input = $request -> all();
-        // echo '<pre>'; 
-        // print_r($input);
-        // die();
        
-        // print_r(request->all());
-        // die();
     }
     //=============================================================================================//
     public function socialLink(){
@@ -260,6 +183,50 @@ class CmsController extends Controller
         }
 
     //============================================================================================//
+        public function addPoster(){
+            $data['appsetting'] = DB::table('appsetting_tb')
+            ->select('copyright_text')
+            ->first();
+            $data['poster'] = DB::table('poster_tb')
+            ->select('poster_tb.*')
+            ->first();
+
+            return view('Admin/addposter',$data);
+        }
+
+
+    public function updatePoster(Request $request){
+        $validated = $request->validate([
+            'image_one'             => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'image_two'             => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        ]);
+        if($request->file('image_one')){
+            if($request->file('image_two')){
+                $image_one = time().$request->file('image_one')->getClientOriginalName();
+                $image_two = time().$request->file('image_two')->getClientOriginalName();
+                $path = $request->file('image_one')->storeAs('public/product-image',$image_one);
+                $path = $request->file('image_two')->storeAs('public/product-image',$image_two);
+            }
+            
+        }else{
+            $image_one = $request->input('old_image_one');
+            $image_two = $request->input('old_image_two');
+        }
+        
+        $data = array(
+            'image_one'      => $image_one,
+            'image_two'        => $image_two
+        );
+       $insert = DB::table('poster_tb')-> update($data);
+       if( $insert){
+            return redirect('addposter')->with('status', 'Successfully Added');
+       }else{
+            return redirect('addposter')->with('error', 'Something Went Wrong');
+       }
+        
+    }
+
+    //===========================================================================//
 
     public function privacy(){
 

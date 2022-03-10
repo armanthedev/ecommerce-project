@@ -39,11 +39,15 @@ route::get('/editparent/{id}','App\Http\Controllers\Admin\CatagoryController@edi
 
 route::put('/editparent/{id}','App\Http\Controllers\Admin\CatagoryController@updateParent')->name('editparent');
 
+route::post('/parentcategory/{id}','App\Http\Controllers\Admin\CatagoryController@deleteParent')->name('deleteparent');
+
 route::get('/childcategory','App\Http\Controllers\Admin\CatagoryController@childCategory')->name('childcategory');
 
 route::get('/editchild/{id}','App\Http\Controllers\Admin\CatagoryController@editChild')->name('editchild');
 
 route::post('/editchild/{id}','App\Http\Controllers\Admin\CatagoryController@updateChild')->name('editchild');
+
+route::post('/childcategory/{id}','App\Http\Controllers\Admin\CatagoryController@deleteChild')->name('deletechild');
 
 // route::post('/editchild/{id}','App\Http\Controllers\Admin\CatagoryController@editChild')->name('editchild');
 //category--end
@@ -55,11 +59,7 @@ route::get('/contactus','App\Http\Controllers\Admin\CmsController@contactUs')->n
 
 route::post('/contactus','App\Http\Controllers\Admin\CmsController@updateContact')->name('contactus');
 //contact--end
-//add header--start
-route::get('/addheader','App\Http\Controllers\Admin\CmsController@addHeader')->name('addheader');
 
-route::post('/addheader','App\Http\Controllers\Admin\CmsController@updateHeader')->name('addheader');
-//end header--end
 //banner -- start
 route::get('/addbanner','App\Http\Controllers\Admin\CmsController@addBanner')->name('addbanner');
 
@@ -79,6 +79,11 @@ route::post('/editedelivery/{id}','App\Http\Controllers\Admin\CmsController@upda
 route::get('/sociallink','App\Http\Controllers\Admin\CmsController@socialLink')->name('sociallink');
 
 route::post('/sociallink','App\Http\Controllers\Admin\CmsController@updateSociallink')->name('sociallink');
+//poster -- start
+route::get('/addposter','App\Http\Controllers\Admin\CmsController@addPoster')->name('addposter');
+
+route::post('/addposter','App\Http\Controllers\Admin\CmsController@updatePoster')->name('addposter');
+//poster -- end
 //privacy -- start
 route::get('/privacy','App\Http\Controllers\Admin\CmsController@privacy')->name('privacy');
 

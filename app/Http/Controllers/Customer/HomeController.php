@@ -22,10 +22,25 @@ class HomeController extends Controller
                 ->first();
 
                 $data['category'] = DB::table('category_tb')
-                ->select('category_tb.c_name')
-                ->where('category','!=',0)                          
+                ->select('category_tb.*')
+                ->where('category','=',0)
+                ->where('status','!=',0)                          
                 ->get();
-                
+
+                $data['department'] = DB::table('category_tb')
+                                    ->select('category_tb.*')
+                                    ->get();
+
+                                   
+                $data['product'] = DB::table('product_tb')
+                                    ->select('product_tb.*','category_tb.c_name as c_name')
+                                    ->join('category_tb','category_tb.id','=','product_tb.p_category')              
+                                    ->get();
+
+                $data['poster'] = DB::table('poster_tb')
+                                ->select('poster_tb.*')
+                                ->first();
+                            
         return view('ecommerce/home',$data);
     }
 
@@ -33,7 +48,9 @@ class HomeController extends Controller
         $data['privacy'] = DB::table('privacy_tb')
                             ->select('*')
                             ->first();
-
+        $data['department'] = DB::table('category_tb')
+                            ->select('category_tb.*')
+                            ->get();
         return view('ecommerce/privacypolicy',$data);
     }
     public function deliveryInformation(){
@@ -86,16 +103,12 @@ class HomeController extends Controller
         );
        $insert = DB::table('subscribe_tb')->insert($data);
        if($insert){
-            return redirect('/')->with('status', 'you suscribe here');
+            return redirect('/')->with('status', 'you subscribe here');
        }else{
             return redirect('/')->with('error', 'Something Went Wrong');
        }
-        // $input = $request -> all();
-        // echo '<pre>'; 
-        // print_r($input);
-        // die();
-       
-        // print_r(request->all());
-        // die();
+        
     }
+
+    
 }

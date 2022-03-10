@@ -8,7 +8,7 @@
             <h3> Catagories </h3>
         </div>
         <div class="card-body">
-            <form action="{{route('addcategory')}}" method="post">
+            <form action="{{route('addcategory')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
@@ -27,6 +27,11 @@
                     </select>
 
                 </div>
+                <div class="form-group">
+                    <label for="image" class="row">Category Image</label>
+                    <input name="image" type="file"  id="image">
+
+                </div>
                 <div class="form-group ">
                     <label for="catagoryStatus">Status</label>
                     <div class="d-flex align-items-center">
@@ -39,7 +44,6 @@
                             <label class="form-check-label">In Active</label>
                         </div>
                     </div>
-
                 </div>
                 <button type="submit" class="btn btn-primary shadow">Add New Catagory</button>
             </form>

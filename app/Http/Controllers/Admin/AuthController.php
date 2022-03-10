@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use Redirect;
+use Illuminate\Support\Facades\Redirect;
 class AuthController extends Controller
 {
     public function index(){
@@ -26,7 +26,7 @@ class AuthController extends Controller
             'terms' => 'required|max:1'
         ]);
 
-        // 
+        
 
         $email = $request->input('email');
         $password = $request->input('password');
@@ -51,7 +51,7 @@ class AuthController extends Controller
                 $request->session()->put('admin', $admin);
                 //echo "<pre>";
                 // print_r($request->session()->get('admin'));
-                return redirect('dashboard')->with('status', 'Welcome Back-'.$admin ->f_name." ".$admin ->l_name);  
+                return redirect('dashboard')->with('status', 'Welcome Back -> '.$admin ->f_name." ".$admin ->l_name);  
                 // return redirect('dashboard');
                 //die();
             }else{
@@ -81,4 +81,3 @@ class AuthController extends Controller
     }
 }
 
-    ?>

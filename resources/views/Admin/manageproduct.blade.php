@@ -36,8 +36,8 @@
                             <td>{{$value->b_price}} </td>
                             <td>{{$value->mrp_price}}</td>
                             <td>{{$value->s_price}}</td>
-                            <td>
-                                <button type="submit" class="btn btn-danger shadow"><i class="far fa-trash-alt "></i>
+                            <td class="d-flex">
+                                <button type="submit" class="mr-2 btn btn-danger shadow"><i class="far fa-trash-alt "></i>
                                 </button>
 
                                 <a href="{{route('editproduct',['id'=>$value->id])}}" class="btn btn-primary shadow">

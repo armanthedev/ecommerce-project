@@ -20,6 +20,7 @@ class InvoiceTb extends Migration
             $table->tinyInteger('status')->comment('0 = Cancel , 1 = Delivered, 2= Request Pending, 3= Processing,4=Return');
             $table->timestamps();
         });
+        
     }
 
     /**

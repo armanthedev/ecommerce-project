@@ -25,7 +25,13 @@
                 <div class="form-group row">
                     <label for="title2" class="col-sm-2 col-form-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" name="email" value="{{$editcontact->email}}"  class="form-control" id="title2" placeholder="Contact email" required>
+                        <input type="email" name="email" value="{{$editcontact->email}}"  class="form-control" id="title2" placeholder="Contact email" >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="iframe" class="col-sm-2 col-form-label">Iframe Link</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="iframe" value="{{$editcontact->map}}"  class="form-control" id="iframe" placeholder="google map Iframe " required>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -35,18 +41,7 @@
                             </textarea>
                     </div>
                 </div>
-                <!-- <div class="form-group d-flex ">
-                    <label for="summernote" class="col-sm-2 col-form-label">Phone</label>
-                    <div class="card col-sm-10 card-outline">
-                        <div class="card-body">
-                            <textarea name="phone" id="summernote" required>
-                                        Phone</br></br>
-                                        Fax</br></br>
-                                        <p style="color:green">+1 (514) 352-1010 +1 (514) 352-7511</p>
-                                    </textarea>
-                        </div>
-                    </div>
-                </div> -->
+                
                 <div class="form-group d-flex">
                     <label for="summernote" class="col-sm-2 col-form-label">Open Time</label>
                     <div class="card col-sm-10 card-outline">

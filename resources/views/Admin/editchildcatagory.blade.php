@@ -23,15 +23,21 @@
                     </select>
 
                 </div>
+                <div class="form-group">
+                    <label for="image" class="row">Category Image</label>
+                    <input name="image" type="file" id="image">
+                    <input type="hidden" name="old_image" value="{{$childcategory->c_image}}">
+                    <img src="{{ asset('storage/product-image/'.$childcategory->c_image) }}" widh="70" height="70">
+                </div>
                 <div class="form-group ">
                     <label for="catagoryStatus">Status</label>
                     <div class="d-flex align-items-center">
                         <div class="form-check mr-2">
-                            <input class="form-check-input" type="radio" value="{{$childcategory->status}}" name="status" checked="">
+                            <input class="form-check-input" type="radio" value="1" name="status"  {{ ($childcategory->status=="1")? "checked" : "" }}>
                             <label class="form-check-label">Active</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" value="{{$childcategory->status}}" name="status">
+                            <input class="form-check-input" type="radio" value="0" name="status" {{ ($childcategory->status=="0")? "checked" : "" }}>
                             <label class="form-check-label">In Active</label>
                         </div>
                     </div>
@@ -41,10 +47,6 @@
             </form>
         </div>
     </div>
-
-
-
-
 </div>
 
 

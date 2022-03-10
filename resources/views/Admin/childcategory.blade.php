@@ -14,6 +14,7 @@
                     <tr>
                         <th class="text-info">ID</th>
                         <th class="text-info">Caragory Name</th>
+                        <th class="text-info">Caragory Image</th>
                         <th class="text-info">Status</th>
                         <th class="text-info">Action</th>
 
@@ -21,19 +22,34 @@
                 </thead>
                 <tbody>
                     @foreach($childcategory as $value)
-                    <tr>
-                        <td>{{$value->id}}</td>
-                        <td>{{$value->c_name}}</td>
-                        <td>{{$value->status}}</td>
-                        <td> 
-                            <button class="btn btn-success shadow" type="submit"><i class="far fa-check-circle"></i></button>
-                                <a href="{{route('editchild',['id'=>$value->id])}}">
-                                    <button class="btn btn-primary shadow" type="submit"><i class="fas fa-pen-alt"></i></button>
+                        <tr>
+                            <td>{{ $value->id }}</td>
+                            <td>{{ $value->c_name }}</td>
+                            <td><img src="{{ asset('storage/product-image/'.$value->c_image) }} width="
+                                    70" height="70"></td>
+                            <td>{{ $value->status }}</td>
+                            <td class="d-flex ">
+                                <button class="btn btn-success shadow mr-2" type="submit"><i
+                                        class="far fa-check-circle"></i></button>
+
+                                <a class="mr-2"
+                                    href="{{ route('editchild',['id'=>$value->id]) }}">
+                                    <button class="btn btn-primary shadow" type="submit"><i
+                                            class="fas fa-pen-alt"></i></button>
                                 </a>
-                            <button class="btn btn-danger shadow" type="submit"><i class="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
+                                {{-- <a href="{{route('deletechild',['id'=>$value->id]) }}">
+                                <button class="btn btn-danger shadow" type="submit"><i
+                                        class="fas fa-trash-alt"></i></button>
+                                </a> --}}
+                                <form class="mr-2"
+                                    action="{{ route('deletechild',['id'=>$value->id]) }}"
+                                    method="post">
+                                    @csrf
+                                    <button class="btn btn-danger shadow" type="submit"><i
+                                            class="fas fa-trash-alt"></i></button>
+                                </form>
+                            </td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

@@ -12,8 +12,6 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{asset('ecoecommerce/css/style.css')}}">
-
     <!-- Css Styles -->
     <link rel="stylesheet" href="{{asset('ecommerce/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('ecommerce/css/font-awesome.min.css')}}">
@@ -95,16 +93,7 @@
                                 <a href="{{$sociallink->linkedin}}"><i class="fa fa-linkedin"></i></a>
                                 <a href="{{$sociallink->pinterest}}"><i class="fa fa-pinterest-p"></i></a>
                             </div>
-                            <!-- <div class="header__top__right__language">
-                                <!-- {{asset('/ogani/img/language.png')}} -->
-                                <!-- <img src="{asset('/ecommerce/img/language.png')}}" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
-                            </div> --> 
+
                             <div class="header__top__right__auth">
                                 <a href="#"><i class="fa fa-user"></i> Login</a>
                             </div>
@@ -214,7 +203,6 @@
                             <li><a href="#">Secure Shopping</a></li>
                             <li><a href="{{route('deliver')}}">Delivery infomation</a></li>
                             <li><a href="{{route('privacypolicy')}}">Privacy Policy</a></li>
-                            <li><a href="#">Our Sitemap</a></li>
                         </ul>
                         <ul>
                             <li><a href="#">Who We Are</a></li>

@@ -19,24 +19,32 @@ class SettingController extends Controller
 
     public function updateAppsetting(Request $request){
         $validated = $request->validate([
-            'apptitle'      => 'required |max:255',
-            'offer'         => 'required |max:255',
-            'address'       => 'required |max:255',
-            'email'         => 'required |max:30',
-            'phone'         => 'required |max:40',
+            'apptitle'      => 'max:255',
+            'offer'         => 'max:255',
+            'address'       => 'max:255',
+            'email'         => 'max:30',
+            'phone'         => 'max:40',
             'favicon'       => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'sitelogo'      => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'admin_align'   => '',
-            'office_time'   => 'required |max:255',
+            'office_time'   => 'max:255',
             'latitude'      => 'max:255',
-            'copyright_text'=> 'required |max:500',
+            'copyright_text'=> 'max:500',
         ]);
 
-        
-            $image_name = time().$request->file('favicon')->getClientOriginalName();
-            $image_name = time().$request->file('sitelogo')->getClientOriginalName();
-            $path = $request->file('favicon')->storeAs('public/product-image',$image_name);
-            $path = $request->file('sitelogo')->storeAs('public/product-image',$image_name);
+        if($request->file('favicon')){
+            if($request->file('sitelogo')){
+                $image_name = time().$request->file('favicon')->getClientOriginalName();
+                $image_name1 = time().$request->file('sitelogo')->getClientOriginalName();
+                $path = $request->file('favicon')->storeAs('public/product-image',$image_name);
+                $path = $request->file('sitelogo')->storeAs('public/product-image',$image_name1);
+            }
+            
+        }else{
+            $image_name = $request->input('old_image_one');
+            $image_name1 = $request->input('old_image_two');
+        }
+            
 
             $data = array(
                 'title'         => $request->input('apptitle'),
@@ -45,7 +53,7 @@ class SettingController extends Controller
                 'email'         => $request->input('email'),
                 'phone'         => $request->input('phone'), 
                 'fav_img'       => $image_name, 
-                'site_logo'     => $image_name,
+                'site_logo'     => $image_name1,
                 'admin_align'   => $request->input('admin_align'), 
                 'office_time'   => $request->input('office_time'),
                 'copyright_text'=> $request->input('copyright_text'),
@@ -56,7 +64,7 @@ class SettingController extends Controller
             if($update){
                 return redirect('appsetting')->with('status','successfully updated');
             }else{
-                return redirect('appsetting')->with('status', 'something went wrong');
+                return redirect('appsetting')->with('error', 'something went wrong');
             }
         
     }

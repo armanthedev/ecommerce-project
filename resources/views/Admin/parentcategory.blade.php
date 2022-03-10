@@ -15,7 +15,8 @@
                 <thead>
                     <tr>
                         <th class="text-info">ID</th>
-                        <th class="text-info">Caragory Name</th>
+                        <th class="text-info">Category Name</th>
+                        <th class="text-info">Category Image</th>
                         <th class="text-info">Status</th>
                         <th class="text-info">Action</th>
 
@@ -27,15 +28,20 @@
                     <tr>
                         <td>{{$value->id}}</td>
                         <td>{{$value->c_name}}</td>
+                        <td><img src="{{ asset('storage/product-image/'.$value->c_image) }}"  width="50" height="50"></td>
                         <td>{{$value->status}}</td>
-                        <td> <button class="btn btn-success shadow" type="submit"><i class="far fa-check-circle"></i></button>
+                        <td class="d-flex">
+                             <button class="btn btn-success shadow mr-2" type="submit"><i class="far fa-check-circle"></i></button>
 
-                           <a href="{{route('editparent',['id'=>$value->id])}}"><button type="button" class="btn btn-primary shadow" type="submit" data-toggle="modal"
-                                data-target="#exampleModal">
+                           <a href="{{route('editparent',['id'=>$value->id])}}" class="mr-2 btn btn-primary shadow" type="submit">
                                 <i class="fas fa-pen-alt"></i>
                             </button></a>
-                            <button class="btn btn-danger shadow" type="submit"><i class="fas fa-trash-alt"></i>
-                            </button>
+                            <form action="{{ route('deleteparent',['id'=>$value->id]) }}"
+                                    method="post">
+                                    @csrf
+                                    <button class="btn btn-danger shadow" type="submit"><i
+                                            class="fas fa-trash-alt"></i></button>
+                                </form>
                         </td>
                     </tr>
                     @endforeach

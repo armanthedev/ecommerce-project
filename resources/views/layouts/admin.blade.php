@@ -202,27 +202,15 @@
                             </ul>
                         </li>
                         <li
-                            class="nav-item {{request()->is('addbanner')?'menu-open':(request()->is('addheader')?'menu-open':(request()->is ('contactus')?'menu-open':(request()->is ('deliveryinfo')?'menu-open':(request()->is('sociallink')?'menu-open':(request()->is ('privacy')?'menu-open':'')))))}}">
+                            class="nav-item {{request()->is('addbanner')?'menu-open':(request()->is ('contactus')?'menu-open':(request()->is ('deliveryinfo')?'menu-open':(request()->is('sociallink')?'menu-open':(request()->is ('addposter')?'menu-open':(request()->is ('privacy')?'menu-open':'')))))}}">
                             <a href="#"
-                                class="nav-link {{request()->is('addbanner')?'active':(request()->is('addheader')?'active':(request()->is ('contactus')?'active':(
-                           request()->is ('deliveryinfo')?'active':(request()->is('sociallink')?'active':(request()->is('privacy')?'active':'')))))}}">
+                                class="nav-link {{request()->is('addbanner')?'active':(request()->is ('contactus')?'active':(request()->is ('deliveryinfo')?'active':(request()->is('sociallink')?'active':(request()->is ('addposter')?'active':(request()->is('privacy')?'active':'')))))}}">
                                 <i class="nav-icon fas fa-tree"></i>
                                 <p>
                                     CMS
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{route('addheader')}}"
-                                        class="nav-link {{request()->is('addheader')?'active':''}}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>
-                                            Add Header
-                                        </p>
-                                    </a>
-                                </li>
-                            </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('addbanner')}}"
@@ -263,6 +251,17 @@
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>
                                             Social Link
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('addposter')}}"
+                                        class="nav-link {{request()->is('addposter')?'active':''}}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>
+                                            Add Poster
                                         </p>
                                     </a>
                                 </li>

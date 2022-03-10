@@ -14,9 +14,13 @@ class ShopController extends Controller
         ->select('*')
         ->first();
 
-$data['appsetting'] = DB::table('appsetting_tb')
-->select('*')
-->first();
+        $data['appsetting'] = DB::table('appsetting_tb')
+        ->select('*')
+        ->first();
+
+        $data['department'] = DB::table('category_tb')
+        ->select('category_tb.*')
+        ->get();
 
         return view('ecommerce/shopgrid',$data);
     }  
@@ -31,9 +35,13 @@ $data['appsetting'] = DB::table('appsetting_tb')
         ->select('*')
         ->first();
 
-$data['appsetting'] = DB::table('appsetting_tb')
-->select('*')
-->first();
+        $data['appsetting'] = DB::table('appsetting_tb')
+        ->select('*')
+        ->first();
+
+        $data['department'] = DB::table('category_tb')
+        ->select('category_tb.*')
+        ->get();
 
         return view('ecommerce/shopingcart',$data);
     }

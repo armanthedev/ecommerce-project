@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ContactTb extends Migration
+class PosterTb extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class ContactTb extends Migration
      */
     public function up()
     {
-        Schema::create('contact_tb', function (Blueprint $table) {
-            $table->increments('Id');
-            $table->string('Heading' , 255);
-            $table->string('phone',);
-            $table->string('address' , 255);
-            $table->string('opentime' , 1000);
-            $table->string('email')->unique();
+        Schema::create('poster_tb', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('image_one');
+            $table->string('image_two');
             $table->timestamps();
         });
-        
-        
     }
 
     /**
