@@ -29,7 +29,7 @@ route::get('/editproduct/{id}','App\Http\Controllers\Admin\ProductController@edi
 
 route::put('/editproduct/{id}','App\Http\Controllers\Admin\ProductController@updateProduct')->name('editproduct');
 
-route::post('/manageproduct/{id}','App\Http\Controllers\Admin\ProductController@deleteProduct')->name('deleteproduct');
+route::delete('/manageproduct/{id}','App\Http\Controllers\Admin\ProductController@deleteProduct')->name('deleteproduct');
 //category--start
 route::get('/addcatagory','App\Http\Controllers\Admin\CatagoryController@addcatagory')->name('addcatagory');
 
@@ -41,7 +41,7 @@ route::get('/editparent/{id}','App\Http\Controllers\Admin\CatagoryController@edi
 
 route::put('/editparent/{id}','App\Http\Controllers\Admin\CatagoryController@updateParent')->name('editparent');
 
-route::post('/parentcategory/{id}','App\Http\Controllers\Admin\CatagoryController@deleteParent')->name('deleteparent');
+route::delete('/parentcategory/{id}','App\Http\Controllers\Admin\CatagoryController@deleteParent')->name('deleteparent');
 
 route::get('/childcategory','App\Http\Controllers\Admin\CatagoryController@childCategory')->name('childcategory');
 
@@ -49,7 +49,7 @@ route::get('/editchild/{id}','App\Http\Controllers\Admin\CatagoryController@edit
 
 route::post('/editchild/{id}','App\Http\Controllers\Admin\CatagoryController@updateChild')->name('editchild');
 
-route::post('/childcategory/{id}','App\Http\Controllers\Admin\CatagoryController@deleteChild')->name('deletechild');
+route::delete('/childcategory/{id}','App\Http\Controllers\Admin\CatagoryController@deleteChild')->name('deletechild');
 
 // route::post('/editchild/{id}','App\Http\Controllers\Admin\CatagoryController@editChild')->name('editchild');
 //category--end

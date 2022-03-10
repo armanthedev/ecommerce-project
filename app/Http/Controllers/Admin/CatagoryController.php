@@ -78,7 +78,8 @@ class CatagoryController extends Controller
     public function editParent($id=null){
         $data['editparent'] = DB::table('category_tb')
                             ->select('category_tb.*')
-                            ->where('category','=',0)                          
+                            ->where('category','=',0)
+                            ->where('category_tb.id',$id)                         
                             ->first();
         $data['appsetting'] = DB::table('appsetting_tb')
                             ->select('copyright_text')
@@ -148,7 +149,8 @@ class CatagoryController extends Controller
     public function editChild($id=null){
         $data['childcategory'] = DB::table('category_tb')
                                 ->select('category_tb.*')
-                                ->where('category','!=',0)                          
+                                ->where('category','!=',0)
+                                ->where('category_tb.id',$id)                 
                                 ->first();
            $data['appsetting'] = DB::table('appsetting_tb')
                                 ->select('copyright_text')
@@ -160,6 +162,7 @@ class CatagoryController extends Controller
         $validated = $request->validate([
             'c_name' => 'required|max:255',
             'category' => 'required|numeric',
+            'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'status' => 'required|numeric',
             // 'c_description' => 'required|max:500',
         ]);

@@ -38,7 +38,10 @@
                             </button></a>
                             <form action="{{ route('deleteparent',['id'=>$value->id]) }}"
                                     method="post">
-                                    @csrf
+                                   @method('delete')
+                                   @csrf
+                                    
+                                   {{-- <input type="hidden" name="_method" value="DELETE"> --}}
                                     <button class="btn btn-danger shadow" type="submit"><i
                                             class="fas fa-trash-alt"></i></button>
                                 </form>

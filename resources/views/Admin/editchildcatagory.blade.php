@@ -8,7 +8,7 @@
             <h3>Edit Catagories </h3>
         </div>
         <div class="card-body">
-            <form action="{{route('editchild',['id'=>$childcategory->id])}}" method="post">
+            <form action="{{route('editchild',['id'=>$childcategory->id])}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label for="c_name">Name</label>

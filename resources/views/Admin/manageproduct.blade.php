@@ -39,7 +39,10 @@
                             <td class="d-flex">
                                 <form action="{{ route('deleteproduct',['id'=>$value->id]) }}"
                                     method="post">
-                                    @csrf
+                                   {{-- @method('delete') --}}
+                                   @csrf
+                                    
+                                   <input type="hidden" name="_method" value="DELETE">
                                     <button class="mr-2 btn btn-danger shadow" type="submit"><i
                                             class="fas fa-trash-alt"></i></button>
                                 </form>

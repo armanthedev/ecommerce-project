@@ -25,8 +25,7 @@
                         <tr>
                             <td>{{ $value->id }}</td>
                             <td>{{ $value->c_name }}</td>
-                            <td><img src="{{ asset('storage/product-image/'.$value->c_image) }} width="
-                                    70" height="70"></td>
+                            <td><img src="{{ asset('storage/product-image/'.$value->c_image) }}"  width="50" height="50"></td>
                             <td>{{ $value->status }}</td>
                             <td class="d-flex ">
                                 <button class="btn btn-success shadow mr-2" type="submit"><i
@@ -44,7 +43,10 @@
                                 <form class="mr-2"
                                     action="{{ route('deletechild',['id'=>$value->id]) }}"
                                     method="post">
+                                    {{-- @method('delete') --}}
                                     @csrf
+                                    
+                                    <input type="hidden" name="_method" value="DELETE">
                                     <button class="btn btn-danger shadow" type="submit"><i
                                             class="fas fa-trash-alt"></i></button>
                                 </form>
