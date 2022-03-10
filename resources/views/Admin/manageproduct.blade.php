@@ -37,8 +37,12 @@
                             <td>{{$value->mrp_price}}</td>
                             <td>{{$value->s_price}}</td>
                             <td class="d-flex">
-                                <button type="submit" class="mr-2 btn btn-danger shadow"><i class="far fa-trash-alt "></i>
-                                </button>
+                                <form action="{{ route('deleteproduct',['id'=>$value->id]) }}"
+                                    method="post">
+                                    @csrf
+                                    <button class="mr-2 btn btn-danger shadow" type="submit"><i
+                                            class="fas fa-trash-alt"></i></button>
+                                </form>
 
                                 <a href="{{route('editproduct',['id'=>$value->id])}}" class="btn btn-primary shadow">
                                     <i class=" fas fa-edit"></i>

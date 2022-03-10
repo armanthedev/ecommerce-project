@@ -8,11 +8,11 @@
             <h3>Edit Catagories </h3>
         </div>
         <div class="card-body">
-            <form action="{{route('editchild',[$childcategory->id])}}" method="post">
+            <form action="{{route('editchild',['id'=>$childcategory->id])}}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Name</label>
-                    <input name="c_name" value="{{$childcategory->c_name}}" type="text" class="form-control form-control-md" id="exampleInputEmail1"
+                    <label for="c_name">Name</label>
+                    <input name="c_name" value="{{$childcategory->c_name}}" type="text" class="form-control form-control-md" id="c_name"
                         placeholder="Catagory Name" required>
 
                 </div>

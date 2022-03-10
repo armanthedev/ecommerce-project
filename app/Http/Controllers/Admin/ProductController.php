@@ -144,4 +144,15 @@ class ProductController extends Controller
             return redirect('editproduct/'.$id)->with('error', 'Something Went Wrong');
        }
     }
+
+    public function deleteProduct($id=null, Request $request){
+
+        $delete = DB::table('product_tb') ->where('id',$id)->delete();
+ 
+         if($delete){
+             return redirect('manageproduct')->with('status','Successfully deleted');
+         }else{
+             return redirect('manageproduct')->with('error','Something wrong');
+         }
+     }
 }

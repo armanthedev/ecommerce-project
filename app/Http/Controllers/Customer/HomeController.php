@@ -23,7 +23,7 @@ class HomeController extends Controller
 
                 $data['category'] = DB::table('category_tb')
                 ->select('category_tb.*')
-                ->where('category','=',0)
+                ->where('category','!=',0)
                 ->where('status','!=',0)                          
                 ->get();
 

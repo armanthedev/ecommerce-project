@@ -28,6 +28,8 @@ route::get('/manageproduct','App\Http\Controllers\Admin\ProductController@manage
 route::get('/editproduct/{id}','App\Http\Controllers\Admin\ProductController@editProduct')->name('editproduct');
 
 route::put('/editproduct/{id}','App\Http\Controllers\Admin\ProductController@updateProduct')->name('editproduct');
+
+route::post('/manageproduct/{id}','App\Http\Controllers\Admin\ProductController@deleteProduct')->name('deleteproduct');
 //category--start
 route::get('/addcatagory','App\Http\Controllers\Admin\CatagoryController@addcatagory')->name('addcatagory');
 
