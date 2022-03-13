@@ -44,16 +44,16 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="{{route('home')}}">Home</a></li>
-                <li><a href="{{route('shop')}}">Shop</a></li>
+                <li ><a class="{{request()->is('home') ? 'acitve' : ''}}" href="{{route('home')}}">Home</a></li>
+                <li class="{{request()->is('shop')?'active':''}}"><a  href="{{route('shop')}}">Shop</a></li>
                 <li><a href="#">Pages</a>
                     <ul class="header__menu__dropdown">
                         <li><a href="{{route('shoppingcart')}}">Shoping Cart</a></li>
                         <li><a href="{{route('checkout')}}">Check Out</a></li>
                     </ul>
                 </li>
-                <li><a href="{{route('blog')}}">Blog</a></li>
-                <li><a href="{{route('contact')}}">Contact</a></li>
+                <li ><a class="{{request()->is('blog') ? 'active' : ''}}" href="{{route('blog')}}">Blog</a></li>
+                <li ><a class="{{request()->is('contact') ? 'active' : ''}}" href="{{route('contact')}}">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -113,16 +113,16 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="{{route('home')}}">Home</a></li>
-                            <li><a href="{{route('shop')}}">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li class="{{request()->is('home') ? 'active': ''}}"><a href="{{route('home')}}">Home</a></li>
+                            <li class="{{ request()->is('shop') ? 'active' : '' }}"><a href="{{route('shop')}}">Shop</a></li>
+                            <li class="{{request()->is('shoppingcart') ? 'active' :(request()->is('checkout') ? 'active' : '') }}" ><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="{{route('shoppingcart')}}">Shoping Cart</a></li>
-                                    <li><a href="{{route('checkout')}}">Check Out</a></li>
+                                    <li class="{{ (request()->is('shoppingcart')) ? 'active' : '' }}"><a href="{{route('shoppingcart')}}">Shoping Cart</a></li>
+                                    <li class="{{ (request()->is('checkout')) ? 'active' : '' }}""><a href="{{route('checkout')}}">Check Out</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{route('blog')}}">Blog</a></li>
-                            <li><a href="{{route('contact')}}">Contact</a></li>
+                            <li class="{{ request()->is('blog') ? 'active' : '' }}"><a href="{{route('blog')}}">Blog</a></li>
+                            <li class="{{ request()->is('contact') ? 'active' : '' }}"><a href="{{route('contact')}}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>

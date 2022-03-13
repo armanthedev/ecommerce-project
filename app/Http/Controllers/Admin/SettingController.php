@@ -79,6 +79,17 @@ class SettingController extends Controller
         return view('Admin/smssetting',$data);
     }
 
+    // public function postSms(Request $request){
+    //     Nexmo::message()->send([
+    //         'to'   => '01612975172',
+    //         'from' => $request->input('phone'),
+    //         'text' => $request->input('message')
+    //     ]);
+
+    //     echo "sms sent successfully";
+        
+    // }
+
     public function emailSetting(){
         $data['appsetting'] = DB::table('appsetting_tb')
                                 ->select('copyright_text')

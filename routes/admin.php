@@ -99,6 +99,8 @@ route::post('/appsetting','App\Http\Controllers\Admin\SettingController@updateAp
 
 route::get('/smssetting','App\Http\Controllers\Admin\SettingController@smsSetting')->name('smssetting');
 
+route::post('/smssetting','App\Http\Controllers\Admin\SettingController@postSms')->name('smssetting');
+
 route::get('/emailsetting','App\Http\Controllers\Admin\SettingController@emailSetting')->name('emailsetting');
 
 route::get('/subscriber','App\Http\Controllers\Admin\EnvelopeController@subscriber')->name('subscriber');
