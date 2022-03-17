@@ -105,7 +105,7 @@ class HomeController extends Controller
        if($insert){
             return redirect('/')->with('status', 'you subscribe here');
        }else{
-            return redirect('/')->with('error', 'Something Went Wrong');
+            return redirect('/')->withError('error', 'Something Went Wrong');
        }
         
     }
